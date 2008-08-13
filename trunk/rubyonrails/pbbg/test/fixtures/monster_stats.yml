@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  monster: 
+  stat: 
+  value: MyString
+
+two:
+  monster: 
+  stat: 
+  value: MyString
