@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Change Password</title>
+</head>
+<body>
+	<tmpl_if name='error'>
+		<span style='color:red'>Error: <!--tmpl_var name='error'--></span>
+	</tmpl_if>
+	<tmpl_if name='message'>
+		<span style='color:green'><!--tmpl_var name='message'--></span>
+	</tmpl_if>
+	<form method='post' action='changepass.cgi'>
+		Password: <input type='password' name='password' id='password' /><br />
+		Confirm Password: <input type='password' name='confirm' /><br />
+		<input type='submit' value='Change Password' />
+	</form>
+	<script type='text/javascript'>
+	document.getElementById('password').focus();
+	</script>
+</body>
+</html>

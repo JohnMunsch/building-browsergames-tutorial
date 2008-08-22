@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+	<p><a href='register.cgi'>Not registered yet?</a></p>
+	<tmpl_if name='error'>
+		<span style='color:red'>Error: <!--tmpl_var name='error'--></span>
+	</tmpl_if>
+	<form action='login.cgi' method='post'>
+		Username: <input type='text' name='username' id='username' value='<!--tmpl_var name="username"-->' /><br />
+		Password: <input type='password' name='password' /><br />
+		<input type='submit' value='Login' />
+	</form>	
+	<script type='text/javascript'>
+	document.getElementById('username').focus();
+	</script>
+</body>
+</html>

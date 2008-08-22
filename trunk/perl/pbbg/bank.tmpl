@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>The Bank</title>
+</head>
+<body>
+	<p>Welcome to the bank. You currently have <strong><!--tmpl_var name='inbank'--></strong> gold in the bank, and <strong><!--tmpl_var name='gold'--></strong> gold in hand.</p>
+	<tmpl_if name='deposited'>
+		<p>You deposited <strong><!--tmpl_var name='deposited'--></strong> gold into your bank account. Your total in the bank is now <strong><!--tmpl_var name='inbank'--></strong>.</p>	
+	</tmpl_if>
+	<tmpl_if name='withdrawn'>
+		<p>You withdraw <strong><!--tmpl_var name='withdrawn'--></strong> gold from your bank account. Your total gold in hand is now <strong><!--tmpl_var name='gold'--></strong>.</p>
+	</tmpl_if>
+	<form action='bank.cgi' method='post'>
+		<input type='text' name='amount' id='amount' /><br />
+		<input type='submit' name='action' value='Deposit' /> or 
+		<input type='submit' name='action' value='Withdraw' />
+	</form>
+	<p><a href='index.cgi'>Back to main</a></p>
+	<script type='text/javascript'>
+		document.getElementById('amount').focus();
+	</script>
+</body>
+</html>
