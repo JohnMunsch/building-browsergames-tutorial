@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+	<tmpl_unless name='message'>
+		<p><a href='login.cgi'>Already Registered?</a></p>
+	</tmpl_unless>
+	<tmpl_if name='error'>
+		<span style='color:red'>Error: <!--tmpl_var name='error'--></span>
+	</tmpl_if>
+	<tmpl_if name='message'>
+		<span style='color:green'><!--tmpl_var name='message'--></span>
+		<p><a href='login.cgi'>Click here to log in</a></p>
+	</tmpl_if>
+	<form method='post' action='register.cgi'>
+		Username: <input type='text' name='username' id='username' value='<!--tmpl_var name="username"-->' /><br />
+		Password: <input type='password' name='password' /><br />
+		Confirm Password: <input type='password' name='confirm' /><br />
+		<input type='submit' value='Register!' />
+	</form>
+	<script type='text/javascript'>
+	document.getElementById('username').focus();
+	</script>
+</body>
+</html>

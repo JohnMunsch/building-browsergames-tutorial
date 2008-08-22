@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Equipment Management</title>
+</head>
+<body>
+	<h3>Current Equipment:</h3>
+	<p><a href='index.cgi'>Back to main</a></p>
+	<ul>
+		<li>
+			Primary Hand:
+			<tmpl_if name='phand'>
+				<!--tmpl_var name='phand'-->
+				<form action='weapon-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='phand' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+		<li>
+			Secondary Hand:
+			<tmpl_if name='shand'>
+				<!--tmpl_var name='shand'-->
+				<form action='weapon-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='shand' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+	</ul>
+	<p>
+		<form action='equipment.cgi' method='post'>
+			<input type='submit' value='Swap' name='swap' />
+		</form>
+	</p>
+</body>
+</html>
