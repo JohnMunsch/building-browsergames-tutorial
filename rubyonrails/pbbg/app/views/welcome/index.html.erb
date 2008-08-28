@@ -4,4 +4,8 @@
   <%= h flash[:notice] %>
 <% end %>
 
-<h1>Welcome To The Game!</h1>
+<h1>Welcome To The Game</h1>
+
+<% if logged_in? %>
+<p>Hello, <%= @current_user.login %>!</p>
+<% end %>
