@@ -1,0 +1,9 @@
+#summary A list of blogs which are mostly or totally devoted to PBBGs.
+
+Aside from [http://buildingbrowsergames.com BuildingBrowsergames.com], there are several other blogs which spend a lot of time discussing PBBGs. Typically these are ones which discuss building and design of PBBGs or are a development blog for one particular game or group of games.
+
+= PBBG Blogs =
+
+  * [http://blog.forumwarz.com/ The Official Forumwarz Blog]
+  * [http://rangersheck.com/ Ranger Sheck's Blog]
+  * [http://webgamedev.wordpress.com/ OpenBracket]
