@@ -4,5 +4,7 @@ class WelcomeController < ApplicationController
     # @current_user variable (if anyone is logged in). The
     # function comes with restful_authentication.
     current_user
+    
+    @title = "Welcome"
   end
 end

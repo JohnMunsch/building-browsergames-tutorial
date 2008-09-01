@@ -2,6 +2,7 @@
 class SessionsController < ApplicationController
   # render new.rhtml
   def new
+    @title = "Log In"
   end
 
   def create

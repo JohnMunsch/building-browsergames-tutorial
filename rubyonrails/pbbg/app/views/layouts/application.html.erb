@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title><%= @title %></title>
+    <%= stylesheet_link_tag "pbbg"  %>
+  </head>
+  <body>
+	<%= render :partial => 'users/user_bar' %>
+
+	<% if flash[:notice] %>
+	  <div class="flashNotice"><%= h flash[:notice] %></div>
+	<% end %>
+	
+	<%= yield  %>
+  </body>
+</html>
