@@ -1,11 +1,12 @@
-<%= render :partial => 'users/user_bar' %>
-
-<% if flash[:notice] %>
-  <%= h flash[:notice] %>
-<% end %>
-
 <h1>Welcome To The Game</h1>
 
 <% if logged_in? %>
-<p>Hello, <%= @current_user.login %>!</p>
+<h2><%= @current_user.login %></h2>
+
+<ul>
+  <li>Attack: <strong><%= @current_user.attack %></strong></li>
+  <li>Defense: <strong><%= @current_user.defense %></strong></li>
+  <li>Magic: <strong><%= @current_user.magic %></strong></li>
+  <li>Gold in hand: <strong><%= @current_user.gold %></strong></li>
+</ul>
 <% end %>
