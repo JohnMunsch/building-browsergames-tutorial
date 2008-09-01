@@ -1,6 +1,8 @@
 #summary Forums where the main topic of discussion is PBBGs.
 
+Note: Browser-Based Game Zone is much more active than PBBGDev.
 
+Since both forums offer RSS feeds you can keep track of new postings in both forums with online RSS readers like Google Reader.
 
 = PBBG Forums =
 
