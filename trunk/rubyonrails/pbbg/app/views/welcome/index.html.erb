@@ -8,5 +8,8 @@
   <li>Defense: <strong><%= @current_user.defense %></strong></li>
   <li>Magic: <strong><%= @current_user.magic %></strong></li>
   <li>Gold in hand: <strong><%= @current_user.gold %></strong></li>
+  <li>Current HP: <strong><%= @current_user.cur_hp %>/<%= @current_user.max_hp %></strong></li>
 </ul>
+
+<%= link_to "The Forest", :controller => "forest" %>
 <% end %>

@@ -1,0 +1,6 @@
+<h1>The Forest</h1>
+
+<p>You've encountered a <%= @monster.name %>!</p>
+
+<%= button_to "Attack", :controller => "forest", :action => "attack" %>
+<%= button_to "Run Away", :controller => "forest", :action => "run_away" %>
