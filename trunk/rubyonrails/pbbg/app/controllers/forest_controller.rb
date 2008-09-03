@@ -7,4 +7,10 @@ class ForestController < ApplicationController
     
     @monster = Monster.random_encounter
   end
+  
+  def attack
+  end
+  
+  def run_away
+  end
 end
