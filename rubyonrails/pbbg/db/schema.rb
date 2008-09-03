@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080901032121) do
+ActiveRecord::Schema.define(:version => 20080901201200) do
+
+  create_table "monsters", :force => true do |t|
+    t.string   "name"
+    t.integer  "attack",     :limit => 11
+    t.integer  "defense",    :limit => 11
+    t.integer  "magic",      :limit => 11
+    t.integer  "gold",       :limit => 11
+    t.integer  "max_hp",     :limit => 11
+    t.integer  "cur_hp",     :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
@@ -25,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20080901032121) do
     t.integer  "defense",                   :limit => 11,  :default => 9
     t.integer  "magic",                     :limit => 11,  :default => 8
     t.integer  "gold",                      :limit => 11,  :default => 0
+    t.integer  "max_hp",                    :limit => 11,  :default => 10
+    t.integer  "cur_hp",                    :limit => 11,  :default => 10
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
