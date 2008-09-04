@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     u && u.authenticated?(password) ? u : nil
   end
 
+  def alive?
+    self.cur_hp > 0
+  end
+
   protected
   
   def before_create
