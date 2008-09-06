@@ -17,7 +17,7 @@ if($setHP == 0) {
 }
 $smarty->assign('currentHP',getStat('curhp',$userID));
 $smarty->assign('maximumHP',getStat('maxhp',$userID));
-
+$smarty->assign('name',$_SESSION['username']);
 $smarty->display('index.tpl');
 
 ?>
