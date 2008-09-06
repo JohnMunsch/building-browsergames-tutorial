@@ -1,0 +1,14 @@
+<h2>Combat Results</h2>
+
+<p>
+<% @combat.each do |t| %>
+  <%= "#{t['attacker']} hit #{t['defender']} for #{t['damage']} damage." %><br/>
+<% end %>
+</p>
+
+<% if @current_user.alive? %>
+<p>You killed <strong><%= @monster.name %></strong>! You gained <strong><%= @monster.gold %></strong> gold.</p>
+<p><%= link_to "Explore Again", :controller => "forest" %></p>
+<% else %>
+<p>You were killed by <strong><%= @monster.name %></strong>.</p>
+<% end %>
