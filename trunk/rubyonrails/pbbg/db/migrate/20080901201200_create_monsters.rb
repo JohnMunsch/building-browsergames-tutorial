@@ -22,11 +22,11 @@ class CreateMonsters < ActiveRecord::Migration
 
     # Create some example monsters.
     Monster.create(:name => 'Crazy Eric', :attack => 2, :defense => 2, 
-      :max_hp => 8, :gold => 5)
+      :max_hp => 8, :cur_hp => 8, :gold => 5)
     Monster.create(:name => 'Lazy Russell', :attack => 1, :defense => 0, 
-      :max_hp => 4, :gold => 20)
+      :max_hp => 4, :cur_hp => 4, :gold => 20)
     Monster.create(:name => 'Hard Hitting Louis', :attack => 4, :defense => 3, 
-      :max_hp => 10, :gold => 5)
+      :max_hp => 10, :cur_hp => 10, :gold => 5)
   end
 
   def self.down
