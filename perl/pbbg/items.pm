@@ -1,9 +1,6 @@
 package items;
 use DBI;
 use statsDRY;
-use constant TYPE => 'item';
-
-
 
 sub getItem {
 	my ($itemID) = @_;
@@ -20,12 +17,12 @@ sub getItem {
  
 sub getStat {
 	my ($statName,$userID) = @_;
-	return statsDRY::getStatDRY(TYPE,$statName,$userID);
+	return statsDRY::getStatDRY('item',$statName,$userID);
 }
 
 sub setStat {
 	my ($statName,$userID,$statValue) = @_;
-	statsDRY::setStatDRY(TYPE,$statName,$userID,$statValue);
+	statsDRY::setStatDRY('item',$statName,$userID,$statValue);
 }
  
 1;

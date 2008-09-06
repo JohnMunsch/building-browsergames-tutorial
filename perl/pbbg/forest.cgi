@@ -5,6 +5,7 @@ use CGI qw(:cgi);
 use HTML::Template;
 use DBI;
 use config;
+use weaponstats;
  
 my $query = new CGI;
 my %arguments = $query->Vars;
@@ -31,6 +32,8 @@ if(%arguments) {
 			defence		=>	stats::getStat('def',$userID),
 			curhp		=>	stats::getStat('curhp',$userID)
 		);
+		my $phand = stats::getStat('phand',$userID);
+		$player{attack} += weaponstats::getWeaponStat('atk',$phand);
 		$sth = $dbh->prepare("SELECT id FROM monsters WHERE name = ?");
 		$sth->execute($arguments{monster});
 		my $monsterID;

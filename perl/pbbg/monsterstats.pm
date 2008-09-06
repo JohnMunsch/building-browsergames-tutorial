@@ -3,16 +3,14 @@ use DBI;
  
 use statsDRY;
 
-use constant TYPE => 'monster';
-
 sub getMonsterStat {
 	my ($statName,$userID) = @_;
-	return statsDRY::getStatDRY(TYPE,$statName,$userID);
+	return statsDRY::getStatDRY('monster',$statName,$userID);
 }
 
 sub setStat {
 	my ($statName,$userID,$statValue) = @_;
-	statsDRY::setStatDRY(TYPE,$statName,$userID,$statValue);
+	statsDRY::setStatDRY('monster',$statName,$userID,$statValue);
 }
  
 1;
