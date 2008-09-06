@@ -1,7 +1,6 @@
 <?php
 
 require_once 'stats-dry.php';
-define('TYPE','item');
 
 function getItem($itemID) {
 	include 'config.php';
@@ -17,10 +16,10 @@ function getItem($itemID) {
 }
 
 function getItemStat($statName,$ItemID) {
-	return getStatDRY(TYPE,$statName,$ItemID);
+	return getStatDRY('item',$statName,$ItemID);
 }
 function setItemStat($statName,$ItemID,$value) {
-	setStatDRY(TYPE,$statName,$ItemID,$value);
+	setStatDRY('item',$statName,$ItemID,$value);
 }
 
 ?>
