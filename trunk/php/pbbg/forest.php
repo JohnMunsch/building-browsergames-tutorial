@@ -1,6 +1,8 @@
 <?php
  
 require_once 'smarty.php';
+require_once 'weapon-stats.php';
+require_once 'login-check.php';
  
 session_start();
  
@@ -24,6 +26,9 @@ if($_POST) {
 			defence		=>	getStat('def',$userID),
 			curhp		=>	getStat('curhp',$userID)
 		);
+		// $phand = getStat('phand',$userID);
+		// $atk = getWeaponStat('atk',$phand);
+		// $player['attack'] += $atk;
 		$query = sprintf("SELECT id FROM monsters WHERE name = '%s'",
 					mysql_real_escape_string($_POST['monster']));
 		$result = mysql_query($query);

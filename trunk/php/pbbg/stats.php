@@ -1,13 +1,12 @@
 <?php
 
 require_once 'stats-dry.php';
-define('TYPE','user');
 
 function getStat($statName,$userID) {
-	return getStatDRY(TYPE,$statName,$userID);
+	return getStatDRY('user',$statName,$userID);
 }
 function setStat($statName,$userID,$value) {
-	setStatDRY(TYPE,$statName,$userID,$value);
+	setStatDRY('user',$statName,$userID,$value);
 }
 
 ?>
