@@ -8,7 +8,9 @@
 
 <% if @current_user.alive? %>
 <p>You killed <strong><%= @monster.name %></strong>! You gained <strong><%= @monster.gold %></strong> gold.</p>
-<p><%= link_to "Explore Again", :controller => "forest" %></p>
+
+<%= link_to "Explore Again", :controller => "forest" %>
+<%= link_to "Home", :controller => "welcome" %>
 <% else %>
 <p>You were killed by <strong><%= @monster.name %></strong>.</p>
 <% end %>
