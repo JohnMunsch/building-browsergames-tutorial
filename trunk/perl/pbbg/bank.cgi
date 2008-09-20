@@ -32,6 +32,7 @@ if(%arguments) {
 			# weird input - assume maximum
 			$amount = $gold;	
 		}
+		$amount = abs($amount);
 		stats::setStat('gc',$userID,stats::getStat('gc',$userID) - $amount);
 		stats::setStat('bankgc',$userID,stats::getStat('bankgc',$userID) + $amount);
 		$parameters{deposited} = $amount;	
