@@ -23,6 +23,7 @@ if($_POST) {
 			// the user input something weird - assume the maximum
 			$amount = $gold;	
 		}
+		$amount = abs($amount);
 		setStat('gc',$userID,getStat('gc',$userID) - $amount);
 		setStat('bankgc',$userID,getStat('bankgc',$userID)+$amount);
 		$smarty->assign('deposited',$amount);
