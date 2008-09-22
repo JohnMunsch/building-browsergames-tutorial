@@ -43,8 +43,9 @@ class User < ActiveRecord::Base
     
     turn_number = 0
     
-    # This is a small workaround for the fact that we aren't getting the user's name yet
-    # when they signup. All we have for the user is the login.
+    # This is a small workaround for the fact that we aren't 
+    # getting the user's name yet when they signup. All we 
+    # have for the user is the login.
     if (self.name.empty?)
       self.name = self.login
     end
@@ -64,11 +65,12 @@ class User < ActiveRecord::Base
       if (attacker.attack > defender.defense)
         damage = attacker.attack - defender.defense
         
-        # We allow damage to take you below zero hitpoints. Presumably the funeral is
-        # closed casket in those cases.
+        # We allow damage to take you below zero hitpoints. Presumably 
+        # the funeral is closed casket in those cases.
         defender.cur_hp -= damage
 
-        # We'll only make a turn record for those cases where something actually happens.
+        # We'll only make a turn record for those cases where 
+        # something actually happens.
         turn = Hash.new
         turn["attacker"] = attacker.name
         turn["defender"] = defender.name
@@ -96,6 +98,46 @@ class User < ActiveRecord::Base
     combat
   end
 
+  def deposit(amount)
+    if (amount < 0 or amount > self.gold)
+      amount = self.gold
+    end
+
+    self.bankgc += amount
+    self.gold -= amount
+    self.save
+    
+    amount
+  end
+
+  def withdraw(amount)
+    if (amount < 0 or amount > self.bankgc)
+      amount = self.bankgc
+    end
+
+    self.bankgc -= amount
+    self.gold += amount
+    self.save
+    
+    amount
+  end
+
+  def heal(amount)
+    if (amount < 0 or amount > self.gold)
+      amount = self.gold
+    end
+    
+    if (amount > (self.max_hp - self.cur_hp))
+      amount = self.max_hp - self.cur_hp
+    end
+    
+    self.gold -= amount
+    self.cur_hp += amount
+    self.save
+    
+    amount
+  end
+  
   protected
   
   def before_create
