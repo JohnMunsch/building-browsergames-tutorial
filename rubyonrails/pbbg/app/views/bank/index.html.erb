@@ -1,0 +1,12 @@
+<p>Welcome to the bank. You currently have <strong><%= @current_user.bankgc %></strong> gold in the bank, and <strong><%= @current_user.gold %></strong> gold in hand.</p>
+<% form_tag('/bank/do_some_banking', :method => :post) do %>
+  <%= text_field_tag 'amount' %><br/>
+  <%= submit_tag 'Deposit' %><%= submit_tag 'Withdraw' %>
+<% end %>
+<p><%= link_to 'Home', :controller => 'welcome' %></p>
+
+<script type="text/javascript">
+  window.onload = function() {
+    document.getElementById('amount').focus();
+  }
+</script>

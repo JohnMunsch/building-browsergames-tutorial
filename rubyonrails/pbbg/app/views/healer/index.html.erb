@@ -1,0 +1,13 @@
+<p>Welcome to the healer. You currently have <strong><%= current_user.cur_hp %></strong> HP out of a maximum of <strong><%= current_user.max_hp %></strong>.</p>
+<p>You have <strong><%= current_user.gold%></strong> gold to heal yourself with, and it will cost you <strong>1 gold per HP healed</strong> to heal yourself.</p>
+<% form_tag('/healer/do_some_healing', :method => :post) do %>
+  <%= text_field_tag 'amount' %>
+  <%= submit_tag 'Heal Me'%>
+<% end %>
+<p><%= link_to "Home", :controller => 'welcome' %></p>
+
+<script type="text/javascript">
+  window.onload = function() {
+    document.getElementById('amount').focus();
+  }
+</script>
