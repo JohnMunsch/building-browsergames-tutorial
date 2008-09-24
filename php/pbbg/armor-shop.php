@@ -25,7 +25,7 @@ if($_POST) {
 		list($price) = mysql_fetch_row($result);
 		$gold = getStat('gc',$userID);
 		setStat('gc',$userID,($gold + $price));
-		setStat($armorSlot,$userID,'');		
+		setStat($_POST['sell'],$userID,'');		
 	} else {	
 		$armorID = $_POST['armor-id'];
 		$query = sprintf("SELECT price FROM items WHERE id = %s",mysql_real_escape_string($armorID));
