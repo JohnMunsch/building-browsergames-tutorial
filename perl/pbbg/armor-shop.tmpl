@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>The Armor Shop</title>
+</head>
+<body>
+	<p>Welcome to the Armor Shop.</p>
+	<p><a href='index.cgi'>Back to main</a></p>
+	<h3>Current Armor:</h3>
+	<ul>
+		<li>
+			Head:
+			<tmpl_if name='ahead'>
+				<!-- tmpl_var name='ahead'-->
+				<form action='armor-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='ahead' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+		<li>
+			Torso:
+			<tmpl_if name='atorso'>
+				<!-- tmpl_var name='atorso'-->
+				<form action='armor-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='atorso' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+		<li>
+			Legs:
+			<tmpl_if name='alegs'>
+				<!-- tmpl_var name='alegs'-->
+				<form action='armor-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='alegs' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+		<li>
+			Right Arm:
+			<tmpl_if name='aright'>
+				<!-- tmpl_var name='aright'-->
+				<form action='armor-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='aright' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+		<li>
+			Left Arm:
+			<tmpl_if name='aleft'>
+				<!-- tmpl_var name='aleft'-->
+				<form action='armor-shop.cgi' method='post'>
+					<input type='hidden' name='sell' value='aleft' />
+					<input type='submit' value='Sell' />
+				</form>
+			<tmpl_else>
+				None
+			</tmpl_if>
+		</li>
+	</ul>
+	<p>You may purchase any of the armor listed below.</p>
+	<tmpl_if name='error'>
+		<p style='color:red'><!--tmpl_var name='error'--></p>
+	</tmpl_if>
+	<tmpl_if name='message'>
+		<p style='color:green'><!--tmpl_var name='message'--></p>
+	</tmpl_if>
+	<ul>
+		<tmpl_loop name='armor'>
+			<li>
+				<strong><!--tmpl_var name='name'--></strong> - <em><!--tmpl_var name='price'--> gold coins</em>
+				<form action='armor-shop.cgi' method='post'>
+					<input type='hidden' name='armor-id' value='<!--tmpl_var name="id"-->' />
+					<input type='submit' value='Buy' />
+				</form>
+			</li>
+		</tmpl_loop>
+	</ul>
+</body>
+</html>
