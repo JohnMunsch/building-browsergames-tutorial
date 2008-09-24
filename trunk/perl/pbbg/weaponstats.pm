@@ -5,7 +5,7 @@ use statsDRY;
 
 sub getWeaponStat {
 	my ($statName,$userID) = @_;
-	return statsDRY::getStatDRY('Weapon',$statName,$userID);
+	return statsDRY::getStatDRY('Item',$statName,$userID);
 }
  
 1;
