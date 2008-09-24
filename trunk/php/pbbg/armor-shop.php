@@ -19,8 +19,7 @@ require_once 'stats.php';	// player stats
 if($_POST) {
 	require_once 'armor-stats.php';		// armor stats
 	if($_POST['sell']) {
-		$armorSlot = getArmorStat('aslot',$_POST['sell']);
-		$armorID = getStat($armorSlot,$userID);
+		$armorID = getStat($_POST['sell'],$userID);
 		$query = sprintf("SELECT price FROM items WHERE id = %s",mysql_real_escape_string($armorID));
 		$result = mysql_query($query);
 		list($price) = mysql_fetch_row($result);
