@@ -34,6 +34,13 @@ if(%arguments) {
 		);
 		my $phand = stats::getStat('phand',$userID);
 		$player{attack} += weaponstats::getWeaponStat('atk',$phand);
+		use armorstats;
+		my @armor = qw(atorso ahead alegs aright aleft);
+		foreach my $key(@armor) {
+			my $id = stats::getStat($key,$userID);
+			my $defence = armorstats::getArmorStat('defence',$id);
+			$player{defence} += $defence;
+		}		
 		$sth = $dbh->prepare("SELECT id FROM monsters WHERE name = ?");
 		$sth->execute($arguments{monster});
 		my $monsterID;
