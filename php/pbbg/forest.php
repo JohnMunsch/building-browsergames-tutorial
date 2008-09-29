@@ -29,6 +29,14 @@ if($_POST) {
 		$phand = getStat('phand',$userID);
 		$atk = getWeaponStat('atk',$phand);
 		$player['attack'] += $atk;
+		require_once 'armor-stats.php';		// armor stats
+		$armor = array('atorso','ahead','alegs','aright','aleft');
+		foreach ($armor as $key) {
+			$id = getStat($key,$userID);
+			$defence = getArmorStat('defence',$id);
+			$player['defence'] += $defence;
+		}		
+		
 		$query = sprintf("SELECT id FROM monsters WHERE name = '%s'",
 					mysql_real_escape_string($_POST['monster']));
 		$result = mysql_query($query);
