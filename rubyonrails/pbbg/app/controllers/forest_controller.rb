@@ -1,8 +1,4 @@
 class ForestController < ApplicationController
-  # We don't want anyone other than logged in users going to the forest or executing
-  # actions inside the forest.
-  before_filter :login_required
-  
   def index
     current_user
     
