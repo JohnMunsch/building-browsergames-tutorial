@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>The Item Shop</title>
+</head>
+<body>
+	<p>Welcome to the Item Shop.</p>
+	<p><a href='index.cgi'>Back to main</a></p>
+	<h3>Current Inventory:</h3>
+	<ul>
+		<tmpl_loop name='inventory'>
+		<li>
+			<!--tmpl_var name='name'--> x <!--tmpl_var name='quantity'-->
+			<form action='item-shop.cgi' method='post'>
+				<input type='hidden' name='sell' value='<!--tmpl_var name="item_id"-->' />
+				<input type='submit' value='Sell' />
+			</form>
+		</li>
+		</tmpl_loop>
+	</ul>
+	<p>You may purchase any of the items listed below.</p>
+	<tmpl_if name='error'>
+		<p style='color:red'><!--tmpl_var name='error'--></p>
+	</tmpl_if>
+	<tmpl_if name='message'>
+		<p style='color:green'><!--tmpl_var name='message'--></p>
+	</tmpl_if>
+	<ul>
+		<tmpl_loop name='items'>
+			<li>
+				<strong><!--tmpl_var name='name'--></strong> - <em><!--tmpl_var name='price'--> gold coins</em>
+				<form action='item-shop.cgi' method='post'>
+					<input type='hidden' name='item-id' value='<!--tmpl_var name="id"-->' />
+					<input type='submit' value='Buy' />
+				</form>
+			</li>
+		</tmpl_loop>
+	</ul>
+</body>
+</html>
