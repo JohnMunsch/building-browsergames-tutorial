@@ -16,6 +16,7 @@
 	<p><a href='bank.php'>The Bank</a></p>
 	<p><a href='healer.php'>The Healer</a></p>
 	<p><a href='weapon-shop.php'>The Weapon Shop</a></p>
+	<p><a href='item-shop.php'>The Item Shop</a></p>
 	<p><a href='equipment.php'>Equipment Management</a></p>
 </body>
 </html>
