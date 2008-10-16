@@ -41,7 +41,7 @@ if($_POST) {
 			mysql_query($query);
 			$smarty->assign('message','You purchased the item.');
 		} else {
-			$smarty->assign('error','You cannot afford that weapon!');
+			$smarty->assign('error','You cannot afford that item!');
 		}
 	} else if($_POST['sell-id']) {
 		$itemID = $_POST['sell-id'];
