@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Your Inventory</title>
+</head>
+<body>
+	<p>This is your inventory. Check out all the stuff you've got!</p>
+	<tmpl_if name='message'>
+		<p><!--tmpl_var name='message'--></p>
+	</tmpl_if>
+	<ul>
+		<tmpl_loop name='inventory'>
+		<li>
+			<strong><!--tmpl_var name='name'--> x <!--tmpl_var name='quantity'--></strong>
+			<form action='inventory.cgi' method='post'>
+				<input type='hidden' name='item-id' value='<!--tmpl_var name="id"-->' />
+				<input type='submit' value='Use' />
+			</form>
+		</li>
+		</tmpl_loop>
+	</ul>
+</body>
+</html>
