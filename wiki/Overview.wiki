@@ -1,10 +1,4 @@
 #summary An overview of all the individual entries in the tutorial thus far.
 #labels Featured
 
-= Introduction =
-
-The following list includes the name of each entry in the tutorial thus far and links to the relevant entry for each language (although some entries are language independent and are listed across multiple languages).
-
-= Tutorial Entries =
-
-I haven't entered this into the wiki yet, but the same information is available in a blog post here: [http://www.johnmunsch.com/2008/08/building_browser_games_an_over.html Building Browser Games: An Overview]
+The page linked to below includes the name of each entry in the tutorial thus far and links to the relevant entry for each language (although some entries are language independent and are listed across multiple languages): [http://buildingbrowsergames.com/tutorials/ Tutorials]
