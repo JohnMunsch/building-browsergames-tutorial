@@ -75,6 +75,34 @@ if($_POST) {
 			setStat('gc',$userID,getStat('gc',$userID)+getMonsterStat('gc',$monsterID));	
 			$smarty->assign('won',1);
 			$smarty->assign('gold',getMonsterStat('gc',$monsterID));
+			$rand = rand(0,100);
+			$query = sprintf("SELECT item_id FROM monster_items WHERE monster_id = %s AND rarity >= %s ORDER BY RAND() LIMIT 1",
+				mysql_real_escape_string($monsterID),
+				mysql_real_escape_string($rand));
+			$result = mysql_query($query);
+			list($itemID) = mysql_fetch_row($result);
+			$query = sprintf("SELECT count(id) FROM user_items WHERE user_id = '%s' AND item_id = '%s'",
+				mysql_real_escape_string($userID),mysql_real_escape_string($itemID));
+			$result = mysql_query($query);
+			list($count) = mysql_fetch_row($result);
+			if ($count > 0) {
+				# already has one of the item
+				$query = sprintf("UPDATE user_items SET quantity = quantity + 1 WHERE user_id = '%s' AND item_id = '%s'",
+					mysql_real_escape_string($userID),
+					mysql_real_escape_string($itemID));
+			} else {
+				# has none - new row
+				$query = sprintf("INSERT INTO user_items(quantity,user_id,item_id) VALUES (1,'%s','%s')",
+					mysql_real_escape_string($userID),
+					mysql_real_escape_string($itemID));
+			}
+			mysql_query($query);
+			# retrieve the item name, so that we can display it
+			$query = sprintf("SELECT name FROM items WHERE id = %s",
+				mysql_real_escape_string($itemID));
+			$result = mysql_query($query);
+			list($itemName) = mysql_fetch_row($result);
+			$smarty->assign('item',$itemName);				
 		} else {
 			// monster won
 			$smarty->assign('lost',1);	
