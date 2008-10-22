@@ -83,6 +83,29 @@ if(%arguments) {
 			stats::setStat('gc',$userID,stats::getStat('gc',$userID) + monsterstats::getMonsterStat('gc',$monsterID));
 			$parameters{won} = 1;
 			$parameters{gold} = monsterstats::getMonsterStat('gc',$monsterID);
+			my $rand = int(rand(99))+1;
+			$sth = $dbh->prepare("SELECT item_id FROM monster_items WHERE monster_id = ? AND rarity >= ? ORDER BY RAND() LIMIT 1");
+			$sth->execute($monsterID,$rand);
+			my $itemID;
+			$sth->bind_columns(\$itemID);
+			$sth->fetch;
+			$sth = $dbh->prepare("SELECT count(id) FROM user_items WHERE user_id = ? AND item_id = ?");
+			$sth->execute($userID,$itemID);
+			my $count;
+			$sth->bind_columns(\$count);
+			$sth->fetch;
+			if($count > 0) {
+				# already has one of the item
+				$sth = $dbh->prepare("UPDATE user_items SET quantity = quantity + 1 WHERE user_id = ? AND item_id = ?");
+			} else {
+				# has none of the item - new row
+				$sth = $dbh->prepare("INSERT INTO user_items(quantity,user_id,item_id) VALUES (1,?,?)");
+			}
+			$sth->execute($userID,$itemID);
+			$sth = $dbh->prepare("SELECT name FROM items WHERE id = ?");
+			$sth->execute($itemID);
+			$sth->bind_columns(\$parameters{item});
+			$sth->fetch;
 		} else {
 			# monster won	
 			$parameters{lost} = 1;
