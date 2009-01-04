@@ -17,7 +17,10 @@
 		{/foreach}
 		</ul>
 		{if $won eq 1}
-			<p>You killed <strong>{$smarty.post.monster}</strong>! You gained <strong>{$gold}</strong> gold.</p>
+			<p>You killed <strong>{$smarty.post.monster}</strong>! You gained <strong>{$gold}</strong> gold, and {$exp} experience.</p>
+			{if $level_up eq 1}
+			    <p><strong>You gained a level!</strong></p>
+			{/if}
 			<p>You found a <strong>{$item}</strong>!</p>
 			<p><a href='forest.php'>Explore Again</a></p>
 		{/if}
