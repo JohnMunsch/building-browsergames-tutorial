@@ -102,7 +102,20 @@ if($_POST) {
 				mysql_real_escape_string($itemID));
 			$result = mysql_query($query);
 			list($itemName) = mysql_fetch_row($result);
-			$smarty->assign('item',$itemName);				
+			$smarty->assign('item',$itemName);
+			
+			$monster_exp = getMonsterStat('exp',$monsterID);
+			$smarty->assign('exp',$monster_exp);
+			$exp_rem = getStat('exp_rem',$userID);
+			$exp_rem -= $monster_exp;
+			$level_up = 0;
+			if($exp_rem <= 0) {
+			    // level up!
+			    $exp_rem = 100;
+			    $level_up = 1;
+			}
+		    $smarty->assign('level_up',$level_up);
+			setStat('exp_rem',$userID,$exp_rem);
 		} else {
 			// monster won
 			$smarty->assign('lost',1);	
