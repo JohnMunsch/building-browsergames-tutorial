@@ -17,7 +17,10 @@
 		</tmpl_loop>
 		</ul>
 		<tmpl_if name='won'>
-			<p>You killed <strong><!--tmpl_var name='monster'--></strong>! You gained <strong><!--tmpl_var name='gold'--></strong> gold.</p>
+			<p>You killed <strong><!--tmpl_var name='monster'--></strong>! You gained <strong><!--tmpl_var name='gold'--></strong> gold, and <strong><!--tmpl_var name='exp'--></strong> experience.</p>
+			<tmpl_if name='level_up'>
+    			<p><strong>You gained a level!</strong></p>
+			</tmpl_if>
 			<p>You found a <strong><!--tmpl_var name='item'--></strong>!</p>
 			<p><a href='forest.cgi'>Explore Again</a></p>
 		</tmpl_if>

@@ -2,6 +2,8 @@
  
 use strict;
 use CGI qw(:cgi);
+use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
+use Data::Dumper;
 use HTML::Template;
 use DBI;
 use config;
@@ -106,6 +108,16 @@ if(%arguments) {
 			$sth->execute($itemID);
 			$sth->bind_columns(\$parameters{item});
 			$sth->fetch;
+
+            my $monster_exp = monsterstats::getMonsterStat('exp',$monsterID);
+            $parameters{exp} = $monster_exp;
+            my $exp_rem = stats::getStat('exp_rem',$userID);
+            $exp_rem -= $monster_exp;
+            if($exp_rem <= 0) {
+                $exp_rem = 100;
+                $parameters{level_up} = 1;
+            }
+            stats::setStat('exp_rem',$userID,$exp_rem);   		
 		} else {
 			# monster won	
 			$parameters{lost} = 1;
