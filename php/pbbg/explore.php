@@ -126,12 +126,25 @@ if($_POST) {
 		header('Location: index.php');	
 	}
 } else {
-	$query = sprintf("SELECT name FROM monsters ORDER BY RAND() LIMIT 1");
-	$result = mysql_query($query);
-	list($monster) = mysql_fetch_row($result);
-	$smarty->assign('monster',$monster);
+    $area_id = $_GET['area'];
+    $query = sprintf("SELECT monster FROM area_monsters WHERE area = %s ORDER BY RAND() LIMIT 1",
+        mysql_real_escape_string($area_id));
+    $result = mysql_query($query);
+    list($monster_id) = mysql_fetch_row($result);
+    $query = sprintf("SELECT name FROM monsters WHERE id = %s",
+        mysql_real_escape_string($monster_id));
+    $result = mysql_query($query);
+    list($monster) = mysql_fetch_row($result);
+    $smarty->assign('monster',$monster);
 }
- 
-$smarty->display('forest.tpl');
+
+$query = sprintf("SELECT name FROM areas WHERE id = %s",
+    mysql_real_escape_string($_GET['area']));
+$result = mysql_query($query);
+list($area_name) = mysql_fetch_row($result);
+$smarty->assign('area',$area_name);
+$smarty->assign('area_id',$_GET['area']);
+
+$smarty->display('explore.tpl');
  
 ?>
