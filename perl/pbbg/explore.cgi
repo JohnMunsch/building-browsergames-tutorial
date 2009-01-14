@@ -16,7 +16,7 @@ my $dbh = DBI->connect("DBI:mysql:$config{dbName}:$config{dbHost}",$config{dbUse
 my $sth;
 my %parameters;
 
-if(%arguments) {
+if($query->request_method() eq 'POST') {
 	if($arguments{action} eq 'Attack') {
 		# fighting the monster	
 		use stats;
@@ -128,17 +128,26 @@ if(%arguments) {
 		print $query->redirect('index.cgi');
 	}	
 } else {
-	$sth = $dbh->prepare("SELECT name FROM monsters ORDER BY RAND() LIMIT 1");
-	$sth->execute();
-	my $monster;
-	$sth->bind_columns(\$monster);
-	$sth->fetch;
-	$parameters{monster} = $monster;
+    my $area_id = $arguments{'area'};
+    $sth = $dbh->prepare("SELECT monster FROM area_monsters WHERE area = ? ORDER BY RAND() LIMIT 1");
+    $sth->execute($area_id);
+    my $monster_id;
+    $sth->bind_columns(\$monster_id);
+    $sth->fetch;
+    $sth = $dbh->prepare("SELECT name FROM monsters WHERE id = ?");
+    $sth->execute($monster_id);
+    $sth->bind_columns(\$parameters{monster});
+    $sth->fetch;
 }
 
+my $area_id = $query->url_param('area');
+$sth = $dbh->prepare("SELECT name FROM areas WHERE id = ?");
+$sth->execute($area_id);
+$sth->bind_columns(\$parameters{area_name});
+$sth->fetch;
 
 my $template = HTML::Template->new(
-		filename	=>	'forest.tmpl',
+		filename	=>	'explore.tmpl',
 		associate	=>	$query,
 	);
 $template->param(%parameters);

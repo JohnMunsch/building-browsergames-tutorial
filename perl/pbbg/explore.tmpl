@@ -1,11 +1,11 @@
 <html>
 <head>
-	<title>The Forest</title>
+	<title>The <!--tmpl_var name='area_name'--></title>
 </head>
 <body>
 	<tmpl_unless name='combat'>
 		<p>You've encountered a <!--tmpl_var name='monster'-->!</p>
-		<form action='forest.cgi' method='post'>
+		<form action='explore.cgi?area=<!--tmpl_var name='area'-->' method='post'>
 			<input type='submit' name='action' value='Attack' /> or 
 			<input type='submit' name='action' value='Run Away' />
 			<input type='hidden' name='monster' value='<!--tmpl_var name='monster'-->' />
@@ -22,7 +22,7 @@
     			<p><strong>You gained a level!</strong></p>
 			</tmpl_if>
 			<p>You found a <strong><!--tmpl_var name='item'--></strong>!</p>
-			<p><a href='forest.cgi'>Explore Again</a></p>
+			<p><a href='explore.cgi?area=<!--tmpl_var name='area'-->'>Explore Again</a></p>
 		</tmpl_if>
 		<tmpl_if name='lost'>
 			<p>You were killed by <strong><!--tmpl_var name='monster'--></strong>.</p>
