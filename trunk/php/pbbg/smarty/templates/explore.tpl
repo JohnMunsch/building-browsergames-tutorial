@@ -1,11 +1,11 @@
 <html>
 <head>
-	<title>The Forest</title>
+	<title>The {$area}</title>
 </head>
 <body>
 	{if $combat eq ''}
 		<p>You've encountered a {$monster}!</p>
-		<form action='forest.php' method='post'>
+		<form action='explore.php?area={$area_id}' method='post'>
 			<input type='submit' name='action' value='Attack' /> or 
 			<input type='submit' name='action' value='Run Away' />
 			<input type='hidden' name='monster' value='{$monster}' />
@@ -22,7 +22,7 @@
 			    <p><strong>You gained a level!</strong></p>
 			{/if}
 			<p>You found a <strong>{$item}</strong>!</p>
-			<p><a href='forest.php'>Explore Again</a></p>
+			<p><a href='explore.php?area={$area_id}'>Explore Again</a></p>
 		{/if}
 		{if $lost eq 1}
 			<p>You were killed by <strong>{$smarty.post.monster}</strong>.</p>
