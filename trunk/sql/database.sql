@@ -167,3 +167,18 @@ INSERT INTO `entity_stats` (`stat_id`, `entity_id`, `value`, `entity_type`) VALU
 (2, 4, '0', 'Item'),
 (2, 2, '0', 'Item'),
 (2, 5, '0', 'Item');
+
+-- quests, 2009-02-16
+CREATE TABLE quests(
+    id int not null auto_increment,
+    title varchar(250),
+    description text,
+    PRIMARY KEY(id)
+);
+CREATE TABLE player_quests(
+    id int not null auto_increment,
+    quest_id int,
+    player_id int,
+    completed tinyint(1) default 0,
+    PRIMARY KEY(id)
+);
