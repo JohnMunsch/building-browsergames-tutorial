@@ -1,0 +1,1 @@
+The page linked to below includes the name of each entry in the tutorial thus far and links to the relevant entry for each language (although some entries are language independent and are listed across multiple languages): [Tutorials](http://buildingbrowsergames.com/tutorials/)

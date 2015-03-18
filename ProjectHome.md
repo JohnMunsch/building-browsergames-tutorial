@@ -1,0 +1,3 @@
+http://www.buildingbrowsergames.com has been showing the steps necessary to build a simple online game using both Perl and PHP (all code completed separately in both languages). Now that the steps of the tutorial are also being built in Ruby on Rails, we are sharing the code for all the versions here on Google Code.
+
+Use it as the starting place for a game of your own, to learn a new language, to learn how to program, or even start translating the tutorial entries into another language and framework like Python/Django or Java/Hibernate/Struts.
