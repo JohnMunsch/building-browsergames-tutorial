@@ -1,4 +1,7 @@
 # building-browsergames-tutorial
+
+**Deprecated**: This is ancient and should be ignored. I simply rescued it from Google Code before it was deleted.
+
 Automatically exported from code.google.com/p/building-browsergames-tutorial
 
 Many years ago I did a series of posts on doing the same game another fellow was doing with PHP using Ruby on Rails instead: http://johnmunsch.com/2008/08/13/building-browser-games-an-overview
